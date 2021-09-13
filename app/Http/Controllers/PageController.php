@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart as AppCart;
 use App\Models\Slide;
 use App\Models\Product;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
-use App\Cart;
+use App\Models\Cart;
 use Session;
 
 class PageController extends Controller
@@ -36,13 +37,24 @@ class PageController extends Controller
     public function getGioithieu(){
         return view('page.gioithieu');
     }
-    public function getAddtoCart(Request $req,$id)
+    public function getAddtoCart(Request $req,$id){
         $product = Product::find($id);
-        // $product = $product->find($id);
-        $oldCart = Session('cart')?Session::get('cart'):null;
+        $oldCart = session('cart')? session()->get('cart'):null;
         $cart = new Cart($oldCart);
         $cart->add($product,$id);
         $req->session()->put('cart',$cart);
+        return redirect()->back();
+    }
+    public function getDelItemCart($id){
+        $oldCart = session()->has('cart')? session()->get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        if(count($cart->items)>0){
+            session()->put('cart',$cart);
+        }
+        else{
+            session()->forget('cart');
+        }
         return redirect()->back();
     }
 

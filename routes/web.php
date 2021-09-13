@@ -40,4 +40,8 @@ Route::get('gioi-thieu',[
 
 Route::get('add-to-cart/{id}',[
     PageController::class,'getAddtoCart'
-])->name('themgioihang');
+])->name('themgiohang');
+
+Route::get('del-cart/{id}',[
+    PageController::class,'getDelItemCart'
+])->name('xoagiohang');
