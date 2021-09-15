@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('loai_sp',$loai_sp);
         }); 
           
-        view()->composer('header',function($view){
+        view()->composer(['header','page.dat_hang'],function($view){
             if(session('cart')){
                 $oldCart = session()->get('cart');
                 $cart = new Cart($oldCart);

@@ -32,13 +32,14 @@
                 </div>
 
                 <div class="beta-comp">
-                    @if (session()->has('cart'))
+                    
                         <div class="cart">
                             <div class="beta-select"><i class="fa fa-shopping-cart"></i> Giỏ hàng (@if(session()->has('cart'))
                                 {{session('cart')->totalQty}}) 
                                 @else Trống @endif)<i class="fa fa-chevron-down"></i></div>
-                            <div class="beta-dropdown cart-body">
-                            
+                                @if (session()->has('cart'))
+                                <div class="beta-dropdown cart-body">
+                                
                                 @foreach ($product_cart as $product)
                                 <div class="cart-item">
                                     <a class="cart-item-delete" href="{{route('xoagiohang',$product['item']['id'])}}"><i class="fa fa-times"></i></a>
@@ -62,7 +63,7 @@
 
                                     <div class="center">
                                         <div class="space10">&nbsp;</div>
-                                        <a href="checkout.html" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
+                                        <a href="{{route('dathang')}}" class="beta-btn primary text-center">Đặt hàng <i class="fa fa-chevron-right"></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -45,3 +45,11 @@ Route::get('add-to-cart/{id}',[
 Route::get('del-cart/{id}',[
     PageController::class,'getDelItemCart'
 ])->name('xoagiohang');
+
+Route::get('dat-hang',[
+    PageController::class,'getCheckout'
+])->name('dathang');
+
+Route::post('dat-hang',[
+    PageController::class,'postCheckout'
+])->name('dathang');
