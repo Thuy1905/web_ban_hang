@@ -53,3 +53,31 @@ Route::get('dat-hang',[
 Route::post('dat-hang',[
     PageController::class,'postCheckout'
 ])->name('dathang');
+
+Route::get('dang-nhap',[
+    PageController::class,'getLogin'
+])->name('login');
+
+Route::post('dang-nhap',[
+    PageController::class,'postLogin'
+])->name('login');
+
+Route::get('dang-ki',[
+    PageController::class,'getSignin'
+])->name('signin');
+
+Route::post('dang-ki',[
+    PageController::class,'postSignin'
+])->name('signin');
+
+Route::get('dang-xuat',[
+    PageController::class,'postLogout'
+])->name('logout');
+
+Route::get('search',[
+    PageController::class,'getSearch'
+])->name ('search');
+
+
+
+
